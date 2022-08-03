@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install wget jq git libclang-dev cmake -y
-. <(wget -qO- https://raw.githubusercontent.com/MrN1x0n/MrN1x0n/main/rust.sh)
+. <(wget -qO- https://raw.githubusercontent.com/MrN1x0n/MrN1x0n/main/rust.sh) -y
 
 mkdir -p $HOME/.sui
 git clone https://github.com/MystenLabs/sui
