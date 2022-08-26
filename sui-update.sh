@@ -2,19 +2,31 @@
 sudo apt update
 sudo apt install cargo -y
 
-#stop and remove db
 systemctl stop suid
-rm -rf $HOME/.sui/db
 
-#get new  genesis
-wget -qO $HOME/.sui/genesis.blob https://github.com/MystenLabs/sui-genesis/raw/main/devnet/genesis.blob
-cd $HOME/sui
+rm -rf /var/sui/db/* /var/sui/genesis.blob $HOME/sui
+
+source $HOME/.cargo/env
+
+cd $HOME
+
+git clone https://github.com/MystenLabs/sui.git
+
+cd sui
+
 git remote add upstream https://github.com/MystenLabs/sui
+
 git fetch upstream
-git stash
+
 git checkout -B devnet --track upstream/devnet
-cargo build --release
-mv $HOME/sui/target/release/{sui,sui-node,sui-faucet} /usr/bin/
+
+cargo build -p sui-node -p sui --release
+
+mv ~/sui/target/release/sui-node /usr/local/bin/
+
+mv ~/sui/target/release/sui /usr/local/bin/
+
+wget -O /var/sui/genesis.blob https://github.com/MystenLabs/sui-genesis/raw/main/devnet/genesis.blob
 
 #check version
 sui -V
