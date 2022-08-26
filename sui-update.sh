@@ -26,7 +26,7 @@ mv ~/sui/target/release/sui-node /usr/local/bin/
 
 mv ~/sui/target/release/sui /usr/local/bin/
 
-wget -O /var/sui/genesis.blob https://github.com/MystenLabs/sui-genesis/raw/main/devnet/genesis.blob
+wget -qO $HOME/.sui/genesis.blob https://github.com/MystenLabs/sui-genesis/raw/main/devnet/genesis.blob
 
 #check version
 sui -V
