@@ -1,3 +1,5 @@
+sudo apt update
+sudo apt install cargo
 systemctl stop suid
 rm -rf $HOME/.sui/db
 wget -qO $HOME/.sui/genesis.blob https://github.com/MystenLabs/sui-genesis/raw/main/devnet/genesis.blob
